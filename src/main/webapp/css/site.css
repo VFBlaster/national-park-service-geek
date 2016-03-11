@@ -13,6 +13,7 @@ body{
 	display: inline-block;
 	margin: 10px;
 	width: 30%;
+	vertical-align: top;
 }
 li img{
 	width: 100%;
@@ -26,3 +27,43 @@ table, th, td {
 table, th{
 	font-weight: bold;
 }
+
+.today{
+	display: inline-block;
+	vertical-align: top;
+	margin: 20px;
+}
+
+.bigPicture{
+	display: inline-block;
+}
+
+.bigPicture img{
+width: 150px;
+border-style: outset;
+}
+
+td {
+	width: 10em;
+	text-align: center;
+	text-style: bold;
+}
+th{
+	width: 5em;
+	
+}
+
+table {
+	border-color: brown;
+}
+
+.weatherDisplay img{
+	width: 100%;
+}
+.advice{
+	display: inline-block;
+	vertical-align: top;
+
+}
+
+

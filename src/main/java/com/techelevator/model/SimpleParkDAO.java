@@ -58,7 +58,6 @@ public class SimpleParkDAO implements ParkDAO{
 	
 	@Override
 	public List<Park> readAllParks() {
-		
 		return parkList;
 	}
 

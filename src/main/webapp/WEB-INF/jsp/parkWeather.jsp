@@ -20,22 +20,83 @@
 		<h1><c:out value="${parkToShow.name}"/></h1>
 		
 		
-		
-		
-		<div class="today"> 
-		<h2>Today's Weather</h2>
-		<p><strong>High:</strong>${today.high}</p>
-		<p><strong>Low:</strong>${today.low}</p>
-		<p><strong>Forecast:</strong>${today.forecast}</p>
-		
-		<p>
-					<c:set var="weatherImageName" value="${today.forecast}"/>
-					<c:url var="parkWeatherSrc" value="/img/weather/${weatherImageName}.png" />
-					<img src="${parkWeatherSrc}" alt="Picture of <c:out value="${today.forecast}"/>"/>
-	
-					</p>
+		<div class="bigPicture">
+			
+				<c:set var="weatherName" value="${oneParkWeatherList[0].forecast}"/>
+				<c:if test="${oneParkWeatherList[0].forecast == 'partly cloudy'}" >
+				<c:set var="weatherName" value="partlyCloudy" /> </c:if>
+					
+				<c:url var="parkWeatherSrc" value="/img/weather/${weatherName}.png" />
+				<img src="${parkWeatherSrc}" alt="Picture of <c:out value="${oneParkWeatherList[0].forecast}"/>"/>
 		</div>
 		
+		<div class="today"> 
+			<h2>Today's Weather</h2>
+			<p><strong>High: </strong>${oneParkWeatherList[0].high}</p>
+			<p><strong>Low: </strong>${oneParkWeatherList[0].low}</p>
+			<p><strong>Forecast: </strong>${oneParkWeatherList[0].forecast}</p>
+		
+		</div>
+		
+		<div class="advice">
+			<h2>Weather-based advice for today:</h2>
+				<c:choose>
+				
+				
+					<c:when test="${oneParkWeatherList[0].forecast =='snow' and oneParkWeatherList[0].high - oneParkWeatherList[0].low > 20}">
+					<c:out value="Make sure to pack snowshoes, and make sure to wear breathable layers of clothing!"/>
+					</c:when>
+				
+					<c:when test="${oneParkWeatherList[0].forecast =='snow'}">
+					<c:out value="Make sure to pack snowshoes!"/>
+					</c:when>
+					
+					<c:when test="${oneParkWeatherList[0].forecast =='rain'}">
+					<c:out value="Make sure to pack rain gear and waterproof shoes!"/>
+					</c:when>
+				
+					<c:when test="${oneParkWeatherList[0].forecast =='thunderstorms'}">
+					<c:out value="Please seek shelter and avoid hiking on exposed ridges or mountaintops!"/>
+					</c:when>
+				
+					<c:when test="${oneParkWeatherList[0].forecast =='sunny' and oneParkWeatherList[0].high - oneParkWeatherList[0].low > 20}">
+					<c:out value="Please pack sunblock to avoid harmful sun rays, and make sure to wear breathable layers of clothing!"/>
+					</c:when>
+				
+				
+					<c:when test="${oneParkWeatherList[0].forecast =='sunny'}">
+					<c:out value="Please pack sunblock to avoid harmful sun rays!"/>
+					</c:when>
+					
+					<c:when test="${oneParkWeatherList[0].high > 75}">
+					<c:out value="Please bring an extra gallon of water!"/>
+					</c:when>
+					
+					<c:when test="${oneParkWeatherList[0].high - oneParkWeatherList[0].low > 20}">
+					<c:out value="Make sure to wear breathable layers of clothing!"/>
+					</c:when>
+					
+					<c:when test="${oneParkWeatherList[0].low < 20}">
+					<c:out value="Exposure to very low temperatures is dangerous, you may suffer frostbite!"/>
+					</c:when>
+					
+					<c:otherwise>
+					<c:out value="No problems, enjoy your visit!"/>
+					</c:otherwise>
+					
+				</c:choose>
+		
+		
+			<p>Toggle temperature units
+				<form method="GET" action="parkWeather">
+					<input type="hidden" name="parkCode" value="${oneParkWeatherList[0].parkCode}">
+ 					<input type="radio" name="temp" value="Fahrenheit" checked> Fahrenheit<br>
+  					<input type="radio" name="temp" value="Celsius"> Celsius<br>
+  					<input type="submit" name="Submit">
+				</form> 
+			</p>
+			
+		</div>
 		
 		<table class="weatherDisplay">
 		<tr>
@@ -46,27 +107,35 @@
 			<th>Day 4</th>
 		</tr>
 		<tr>
-			
-			
 			<th>Low</th>
 			<c:forEach var="counter" begin="1" end="4">
-			<td>${weatherList[counter].low}</td>
-		</c:forEach>
-		
-		
-			
+				<td>${oneParkWeatherList[counter].low}</td>
+			</c:forEach>
 		</tr>
+		
 		<tr>
 			<th>High</th>
 			<c:forEach var="counter" begin="1" end="4">
-			<td>${weatherList[counter].high}</td>
-		</c:forEach>
+				<td>${oneParkWeatherList[counter].high}</td>
+			</c:forEach>
 		</tr>
+		
 		<tr>
 			<th>Forecast</th>
 			<c:forEach var="counter" begin="1" end="4">
-			<td>${weatherList[counter].forecast}</td>
-		</c:forEach>
+				<td>${oneParkWeatherList[counter].forecast}<br>
+					<c:set var="weatherName" value="${oneParkWeatherList[counter].forecast}"/>
+						<c:if test="${oneParkWeatherList[counter].forecast == 'partly cloudy'}" >
+					<c:set var="weatherName" value="partlyCloudy" /> </c:if>
+					
+					<c:url var="parkWeatherSrc" value="/img/weather/${weatherName}.png" />
+					<img src="${parkWeatherSrc}" alt="Picture of <c:out value="${oneParkWeatherList[counter].forecast}"/>"/>
+
+				</td>
+			</c:forEach>
+	
+
+			
 		</tr>
 		</table><br>
 		

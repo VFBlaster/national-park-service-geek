@@ -6,6 +6,8 @@ import java.util.List;
 public class SimpleParkWeatherDAO implements ParkWeatherDAO{
 
 	private List<Weather> weatherList;
+	private List<Weather> oneParkWeatherList;
+
 	
 	public SimpleParkWeatherDAO(){
 		weatherList = new ArrayList<Weather>();
@@ -92,16 +94,17 @@ public class SimpleParkWeatherDAO implements ParkWeatherDAO{
 	}
 
 	@Override
-	public Weather findWeatherByCode(String parkCode) {
-			Weather desired = null;
-			for (Weather w : weatherList){
-				if(w.getParkCode().equals(parkCode)){
-					desired = w;
-				}
-			}
-			return desired;
-
+	public List<Weather> findWeatherByCode(String parkCode) {
+		oneParkWeatherList = new ArrayList<Weather>();
+		Weather desired = null;
 		
+		for (Weather w : weatherList){
+			if(w.getParkCode().equals(parkCode)){
+				desired = w;
+				oneParkWeatherList.add(desired);
+			}
+		}
+		return oneParkWeatherList;
 	}
 
 }
