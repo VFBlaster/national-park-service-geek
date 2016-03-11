@@ -90,7 +90,7 @@
 			<p>Toggle temperature units
 				<form method="GET" action="parkWeather">
 					<input type="hidden" name="parkCode" value="${oneParkWeatherList[0].parkCode}">
- 					<input type="radio" name="temp" value="Fahrenheit" checked> Fahrenheit<br>
+ 					<input type="radio" name="temp" value="Fahrenheit"> Fahrenheit<br>
   					<input type="radio" name="temp" value="Celsius"> Celsius<br>
   					<input type="submit" name="Submit">
 				</form> 
