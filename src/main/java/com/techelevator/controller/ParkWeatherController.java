@@ -23,7 +23,7 @@ import com.techelevator.model.Weather;
 
 
 @Controller
-@SessionAttributes("temp")
+@SessionAttributes("tempSession")
 public class ParkWeatherController {
 	
 	private ParkWeatherDAO parkWeatherDAO;
@@ -47,29 +47,44 @@ public class ParkWeatherController {
 	@RequestMapping(path="/parkWeather", method=RequestMethod.GET)
 	public String displayWeatherDetail(Map<String, Object> modelWeatherDetail,
 									@RequestParam(name="parkCode") String parkCode,
-									@RequestParam(name="temp", required=false) String temp){		
+									@RequestParam(name="temp", required=false) String temp,
+									@RequestParam(name="tempChoice", required=false) String tempChoice){		
 		
 		List<Weather> oneParkWeatherList = new ArrayList<Weather>();
 		Park parkToShow = null;
 		
+		String tempSession = "";
 		
-		if (temp == null){
-			temp = "Fahrenheit";
-			modelWeatherDetail.put("temp", temp);
+	
+				
+		
+		if (temp != null) {
+			tempSession = temp;
+			modelWeatherDetail.put("tempSession", tempSession);
 		}
-		modelWeatherDetail.put("temp", temp);
-				
-		temp = (String)modelWeatherDetail.get("temp");	
-				
-		if (temp == "Fahrenheit"){
+		
+		
+		
+		if (modelWeatherDetail.get("tempSession") == null || modelWeatherDetail.get("tempSession").equals("Fahrenheit")){
+			tempSession = "Fahrenheit";
+			modelWeatherDetail.put("tempSession", tempSession);
+		} else if (modelWeatherDetail.get("tempSession").equals("Celsius")){
+			tempSession = "Celsius";
+		}
+		
+		
+		
+		
+		if (tempSession.equals("Fahrenheit")){
 				oneParkWeatherList = (parkWeatherDAO.findWeatherByCode(parkCode));
 				parkToShow = parkDAO.findParkByCode(parkCode);
 		}
-		else {
+		else if (tempSession.equals("Celsius")){
 				oneParkWeatherList = (parkWeatherCelsiusDAO.findWeatherByCode(parkCode));
 				parkToShow = parkDAO.findParkByCode(parkCode);
 		}
 
+		
 		modelWeatherDetail.put("oneParkWeatherList", oneParkWeatherList);
 		modelWeatherDetail.put("parkToShow", parkToShow);
 		

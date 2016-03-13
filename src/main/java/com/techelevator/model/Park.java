@@ -148,7 +148,7 @@ public class Park {
 		return parkWeatherList;
 	}
 
-	public void setParkWeather(List<Weather> parkWeather) {
+	public void setParkWeather(List<Weather> parkWeatherList) {
 		this.parkWeatherList = parkWeatherList;
 	}
 

@@ -2,6 +2,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 
 <html>
@@ -32,7 +34,9 @@
 		
 		<div class="today"> 
 			<h2>Today's Weather</h2>
-			<p><strong>High: </strong>${oneParkWeatherList[0].high}</p>
+			<c:set var="now" value="<%=new java.util.Date()%>" />
+			<fmt:formatDate type="date" value="${now}" />
+			<p><strong>High: </strong>${oneParkWeatherList[0].high} </p>
 			<p><strong>Low: </strong>${oneParkWeatherList[0].low}</p>
 			<p><strong>Forecast: </strong>${oneParkWeatherList[0].forecast}</p>
 		
@@ -86,25 +90,28 @@
 					
 				</c:choose>
 		
-		
-			<p>Toggle temperature units
+			<div class="tempy">
+			<p><strong>Toggle temperature units</strong><br>
+				Currently showing: ${tempSession}
 				<form method="GET" action="parkWeather">
 					<input type="hidden" name="parkCode" value="${oneParkWeatherList[0].parkCode}">
  					<input type="radio" name="temp" value="Fahrenheit"> Fahrenheit<br>
-  					<input type="radio" name="temp" value="Celsius"> Celsius<br>
+  					<input type="radio" name="temp" value="Celsius"> Celsius<br><br>
+  					
   					<input type="submit" name="Submit">
 				</form> 
 			</p>
+			</div>
 			
 		</div>
 		
 		<table class="weatherDisplay">
 		<tr>
 			<th></th>
-			<th>Day 1</th>
-			<th>Day 2</th>
-			<th>Day 3</th>
-			<th>Day 4</th>
+			<th>Tomorrow</th>
+			<th>2 days from now</th>
+			<th>3 days from now</th>
+			<th>4 days from now</th>
 		</tr>
 		<tr>
 			<th>Low</th>

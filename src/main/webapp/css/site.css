@@ -2,9 +2,29 @@
 	width: 600px;
 }
 
+.parkImage{
+	display: inline-block;
+	
+}
+.parkImage img{
+	border-color: white;
+	border-width: 10px;
+	border-style: solid;
+	
+}
+
+.tempy{
+	background-color: lightgray;
+}
 body{
 	background-color: #ccff99;
 }
+
+.describe{
+	display: inline-block;
+	
+}
+
 
 .park{
 	background-color: white;
@@ -63,6 +83,7 @@ table {
 .advice{
 	display: inline-block;
 	vertical-align: top;
+	width: 30%;
 
 }
 
