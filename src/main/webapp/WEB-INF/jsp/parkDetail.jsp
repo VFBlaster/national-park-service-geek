@@ -17,13 +17,14 @@
 			<img id="logo" src="${logoSrc}" alt="National Park Geek Logo"/>
 		</header>
 					<h1>${parkToShow.name}</h1>
-					<p class="parkImage" >
+					
 					<c:set var="parkImageName" value="${parkToShow.parkCode}"/>
 					<c:url var="parkImgSrc" value="/img/parks/${fn:toLowerCase(parkImageName)}.jpg" />
+					<div class="parkImage" >
 					<img src="${parkImgSrc}" alt="Picture of <c:out value="${parkToShow.name}"/>"/>
-					</p>
+					</div>
 					
-					<p class="describe"><c:out value="${parkToShow.description}"/></p>	
+					<div class="describe"><c:out value="${parkToShow.description}"/></div>	
 					
 			
 					<ul>

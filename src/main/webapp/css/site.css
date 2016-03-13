@@ -2,26 +2,27 @@
 	width: 600px;
 }
 
-.parkImage{
-	display: inline-block;
-	
-}
 .parkImage img{
 	border-color: white;
 	border-width: 10px;
 	border-style: solid;
+	float: left;	
+	width: 500px;
+	margin: 0px 20px 0px 0px;
+	vertical-align: top;
 	
 }
 
 .tempy{
 	background-color: lightgray;
+	width: 50%;
 }
+
 body{
 	background-color: #ccff99;
 }
 
 .describe{
-	display: inline-block;
 	
 }
 
@@ -42,10 +43,16 @@ li img{
 table, th, td {
 	font-weight: normal;
     border: 1px solid black;
+    background-color: white;
 }
 
 table, th{
 	font-weight: bold;
+}
+
+.3items{
+	display: inline-block;
+	
 }
 
 .today{
@@ -55,12 +62,19 @@ table, th{
 }
 
 .bigPicture{
-	display: inline-block;
+	vertical-align: top;
+	float: left;	
+	
+	
+	
 }
 
 .bigPicture img{
-width: 150px;
-border-style: outset;
+	width: 200px;
+	border-style: outset;
+	vertical-align: top;
+	
+	
 }
 
 td {
@@ -73,12 +87,10 @@ th{
 	
 }
 
-table {
-	border-color: brown;
-}
 
 .weatherDisplay img{
 	width: 100%;
+	
 }
 .advice{
 	display: inline-block;

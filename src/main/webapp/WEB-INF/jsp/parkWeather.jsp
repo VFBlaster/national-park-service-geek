@@ -21,7 +21,7 @@
 		
 		<h1><c:out value="${parkToShow.name}"/></h1>
 		
-		
+		<div class="3items">
 		<div class="bigPicture">
 			
 				<c:set var="weatherName" value="${oneParkWeatherList[0].forecast}"/>
@@ -34,8 +34,8 @@
 		
 		<div class="today"> 
 			<h2>Today's Weather</h2>
-			<c:set var="now" value="<%=new java.util.Date()%>" />
-			<fmt:formatDate type="date" value="${now}" />
+			<c:set var="now" value="<%=new java.util.Date()%>"  />
+			<p style="color:red"><b><fmt:formatDate type="date" value="${now}" /></b></p>
 			<p><strong>High: </strong>${oneParkWeatherList[0].high} </p>
 			<p><strong>Low: </strong>${oneParkWeatherList[0].low}</p>
 			<p><strong>Forecast: </strong>${oneParkWeatherList[0].forecast}</p>
@@ -43,7 +43,7 @@
 		</div>
 		
 		<div class="advice">
-			<h2>Weather-based advice for today:</h2>
+			<h3>Weather-based advice for today:</h3>
 				<c:choose>
 				
 				
@@ -104,7 +104,9 @@
 			</div>
 			
 		</div>
+		</div>
 		
+		<h3>Weather forecast for the next 4 days:</h3>
 		<table class="weatherDisplay">
 		<tr>
 			<th></th>
