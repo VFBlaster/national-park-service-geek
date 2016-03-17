@@ -35,9 +35,9 @@
 		<div class="today"> 
 			<h2>Today's Weather</h2>
 			<c:set var="now" value="<%=new java.util.Date()%>"  />
-			<p style="color:red"><b><fmt:formatDate type="date" value="${now}" /></b></p>
-			<p><strong>High: </strong>${oneParkWeatherList[0].high} </p>
-			<p><strong>Low: </strong>${oneParkWeatherList[0].low}</p>
+			<p><b><fmt:formatDate type="date" value="${now}" /></b></p>
+			<p style="color:red"><strong>High: </strong>${oneParkWeatherList[0].high} </p>
+			<p style="color:blue"><strong>Low: </strong>${oneParkWeatherList[0].low}</p>
 			<p><strong>Forecast: </strong>${oneParkWeatherList[0].forecast}</p>
 		
 		</div>

@@ -17,6 +17,7 @@
 			<img id="logo" src="${logoSrc}" alt="National Park Geek Logo"/>
 		</header>
 
+
 		<ul>
 			<c:forEach var="park" items="${listOfParks}">
 				<li class="park">
